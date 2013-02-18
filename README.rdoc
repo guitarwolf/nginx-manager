@@ -1,0 +1,31 @@
+= nginx-manager
+
+* {Homepage}[https://rubygems.org/gems/nginx-manager]
+* {Documentation}[http://rubydoc.info/gems/nginx-manager/frames]
+* {Email}[mailto:]
+
+== Description
+
+TODO: Description
+
+== Features
+
+== Examples
+
+  require 'nginx/manager'
+
+== Requirements
+
+== Install
+
+  $ gem install nginx-manager
+
+== Synopsis
+
+  $ nginx-manager
+
+== Copyright
+
+Copyright (c) 2013 
+
+See LICENSE.txt for details.

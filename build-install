@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# -*- mode: bash; coding: utf-8 -*-
+
+
+git add .
+gem build nginx-manager.gemspec
+sudo gem install --no-ri --no-rdoc nginx-manager-0.1.0.gem
+rm nginx-manager-0.1.0.gem

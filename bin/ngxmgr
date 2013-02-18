@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# -*- mode:ruby; coding:utf-8 -*-
+
+require 'rubygems' if RUBY_VERSION < '1.9'
+require 'msgpack/rpc'
+require 'nginx/manager'
+
+mgr = MessagePack::RPC::Client.new(Nginx::Agent::BIND_ADDRESS, Nginx::Agent::BIND_PORT)
+
+puts mgr.call(:status)
+
