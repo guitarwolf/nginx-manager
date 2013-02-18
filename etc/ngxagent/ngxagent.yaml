@@ -1,0 +1,10 @@
+# -*- mode:yaml; coding:utf-8 -*-
+
+service:
+  port: 11910
+  address: 127.0.0.1
+
+syslog:
+  facility: local7
+  mask: info
+

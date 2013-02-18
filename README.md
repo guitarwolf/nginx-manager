@@ -18,6 +18,8 @@ test
 ----
 ```bash
 sudo apt-get install nginx
+sudo cp etc/rsyslog.d/ngxagent.conf /etc/rsyslog.d/ngxagent.conf
+sudo /etc/init.d/rsyslog restart
 sudo ./etc/init.d/ngxagent start
 ngxmgr
 ```

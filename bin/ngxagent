@@ -6,30 +6,27 @@ require 'msgpack/rpc'
 require 'nginx/manager'
 require 'sys_logger'
 require 'webrick'
+require 'yaml'
+
+YAML.load_file('/etc/ngxagent/ngxagent.yaml') if File.exist?('/etc/ngxagent/ngxagent.yaml')
 
 $logger          = SysLogger.new
 $logger.facility = SysLogger::LOG_LOCAL7
 Syslog.mask      = Syslog::LOG_UPTO(Syslog::LOG_INFO)
-
 PID_FILE = '/var/run/ngxagent.pid'
-
-class NginxHandler
-  def status
-    `ps -Cnginx ufw`.strip.chomp
-  end
-end
 
 def main(argv)
   begin
+    $logger.info("[#{$$}] ngxagent-server start.")
 
     agent = MessagePack::RPC::Server.new
-    agent.listen(Nginx::Agent::BIND_ADDRESS, Nginx::Agent::BIND_PORT, NginxHandler.new)
+    agent.listen(Nginx::Agent::BIND_ADDRESS, Nginx::Agent::BIND_PORT, Nginx::Agent::Handler.new)
 
     # シグナルをキャッチしたら終了
     [:INT, :TERM, :KILL].each do |signal|
       Signal.trap(signal) {
         Syslog.open unless Syslog.opened?
-        $logger.warn("[#{$$}] ngxagent stop. (#{$!})")
+        $logger.warn("[#{$$}] ngxagent stop.")
         agent.stop
       }
     end

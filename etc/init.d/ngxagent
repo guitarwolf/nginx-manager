@@ -64,9 +64,7 @@ do_start()
 #
 do_stop()
 {
-    echo -n "Stopping $DESC: "
     start-stop-daemon --stop --signal TERM --pidfile $PIDFILE --retry 3 || true
-    echo "$NAME."
 }
 
 #

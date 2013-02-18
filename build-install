@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # -*- mode: bash; coding: utf-8 -*-
 
+VERSION=0.0.1
 
+find . -name "*~" | xargs rm -f
 git add .
 gem build nginx-manager.gemspec
-sudo gem install --no-ri --no-rdoc nginx-manager-0.1.0.gem
-rm nginx-manager-0.1.0.gem
+sudo gem install --no-ri --no-rdoc nginx-manager-${VERSION}.gem
+rm nginx-manager-${VERSION}.gem

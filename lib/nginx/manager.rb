@@ -1,4 +1,5 @@
 require 'nginx/manager/version'
+require 'nginx/agent/handler'
 
 module Nginx
   module Manager
